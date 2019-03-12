@@ -36,10 +36,8 @@ int main(int argc, char *argv[])
     filterModel.setSortRole(NameRole);
 
     QTranslator t;
-    if (t.load(":/translations/pardus-store_" + QLocale::system().name())) {
+    if (QLocale::system().bcp47Name() != "en" && t.load(":/translations/pardus-store_" + QLocale::system().name())) {
         app.installTranslator(&t);
-    } else {
-        qDebug() << "Could not load the translation";
     }
 
     QQmlApplicationEngine engine;
